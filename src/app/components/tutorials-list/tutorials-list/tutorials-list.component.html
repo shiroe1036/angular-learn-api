@@ -1,0 +1,38 @@
+<div class="list row">
+    <div class="col-md-6">
+        <h4>Tutorials List</h4>
+        <ul class="list-group">
+            <li class="list-group-item"
+                *ngFor="let tutorial of tutorials; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="setActiveTutorial(tutorial, i)"
+            >
+                {{ tutorial.title }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentTutorial._id">
+            <h4>Tutorial</h4>
+            <div>
+                <label for=""><strong>Title: </strong></label> {{ currentTutorial?.title || null }}
+            </div>
+            <div>
+                <label for=""><strong>Description: </strong></label> {{ currentTutorial?.description || null }}
+            </div>
+            <div>
+                <label for=""><strong>Status: </strong></label>
+                {{ currentTutorial?.published ? "Published" : "Pending" }}
+            </div>
+
+            <a routerLink="/tutorials/{{ currentTutorial?._id || null }}" class="badge badge-warning">
+                Edit
+            </a>
+        </div>
+
+        <div *ngIf="!currentTutorial">
+            <br>
+            <p>Please click on a tutorial...</p>
+        </div>
+    </div>
+</div>
