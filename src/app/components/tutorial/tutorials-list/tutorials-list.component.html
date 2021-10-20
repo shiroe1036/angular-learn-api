@@ -25,7 +25,7 @@
                 {{ currentTutorial?.published ? "Published" : "Pending" }}
             </div>
 
-            <a routerLink="/tutorials/{{ currentTutorial?._id || null }}" class="badge badge-warning">
+            <a routerLink="/tutorials/details/{{ currentTutorial?._id || null }}" class="btn btn-info text-white">
                 Edit
             </a>
         </div>
